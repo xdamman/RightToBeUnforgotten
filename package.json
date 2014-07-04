@@ -10,7 +10,12 @@
     "type": "git",
     "url": "git://github.com/xdamman/RightToBeUnforgotten.git"
   },
-  "author": "Mark Percival (@mdp)",
+  "keywords": [
+    "eu",
+    "press freedom",
+    "right to be forgotten"
+  ],
+  "author": "Mark Percival and Xavier Damman",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xdamman/RightToBeUnforgotten/issues"
@@ -18,8 +23,12 @@
   "homepage": "https://github.com/xdamman/RightToBeUnforgotten",
   "dependencies": {
     "express": "^4.4.5",
-    "express-logger": "0.0.3",
     "body-parser": "^1.4.3",
     "express3-handlebars": "^0.5.0"
+    "mongoose": "^3.8.12",
+    "logfmt": "^1.1.2"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }
