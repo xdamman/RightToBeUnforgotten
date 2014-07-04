@@ -7,13 +7,33 @@ module.exports = function(server) {
   server.use('/public', express.static('public/'));
 
   server.get('/', function(req, res) {
-    db.getDisappeareds(function(err, urls){
-      console.log(urls);
-      res.render('home', {
+
+    var selection = req.param('selection','media companies');
+
+    switch(selection) {
+      case "media companies":
+        db.getDisappeareds(function(err, urls){
+        console.log(urls);
+        res.render('home', {
           title: "Title"
-        , urls: urls 
-      });
-    });
+          , urls: urls 
+          , selection: selection
+        });
+      })
+      break;
+
+      case "anyone":
+        db.getDisappeareds(function(err, urls){
+        console.log(urls);
+        res.render('home', {
+          title: "Title"
+          , urls: urls 
+          , selection: selection
+        });
+      })
+      break;
+    }
+
   });
 
   server.get('/process/:id', function(req, res) {

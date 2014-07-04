@@ -1,6 +1,18 @@
-<h3>Latest submissions</h3>
+<h3>Latest submission 
+  <div class="btn-group" id="toggle">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      from {{selection}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="/">from media companies</a></li>
+      <li><a href="/?selection=anyone">from anyone</a></li>
+    </ul>
+  </div>
+
+</h3>
 
 {{>_table}}
+
 
 
 <h3>Submit</h3>
@@ -29,3 +41,5 @@ If you have received an email notification by a search engine that one of your p
 <p>
     This is an open source project under MIT license. Pull requests are more than welcome. <a href="https://github.com/xdamman/RightToBeUnforgotten" target="_blank">https://github.com/xdamman/RightToBeUnforgotten</a>.
 </p>
+
+<script src="/public/js/home.js" defer></script>
