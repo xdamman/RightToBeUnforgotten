@@ -10,16 +10,37 @@ exports.parse = function(email, callback) {
     "emailId": email._id
   }
   var urls = urlFind(email['stripped-text']);
+  if (email["X-Mailgun-Spf"] === "Pass" || email["X-Mailgun-Dkim"] === "Pass") {
+    forgotten.valid = true
+  }
   lookupUrl(urls, function(err, embedly) {
-    console.log(embedly);
     forgotten.extracted_urls = urls;
     forgotten.urls = embedly;
+    for(var i=0; i < forgotten.urls.length; i++) {
+      var link = forgotten.urls[i];
+      link.domain = getDomain(link.url);
+      link.favicon = getFavicon(link.url);
+    }
     callback(null, forgotten);
   });
 };
 
 function urlFind(text) {
   return text.match(URL_REGEX);
+}
+
+function getDomain(url) {
+  var matches = url.match(/https?\:\/\/([a-zA-Z0-9\.]+)\/?/);
+  if (matches.length > 0) {
+    return matches[1];
+  }
+}
+
+function getFavicon(url) {
+  var domain = getDomain(url);
+  if (domain) {
+    return "http://" + domain + "/favicon.ico"
+  }
 }
 
 function lookupUrl(urls, callback) {

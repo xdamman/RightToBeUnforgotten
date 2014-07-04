@@ -12,4 +12,14 @@ db.processEmail = function(email, callback) {
   });
 }
 
+db.getDisappeareds = function(callback) {
+  db.collection('disappeareds').find().toArray(function(err, results){
+    var urls = [];
+    for(var i=0; i < results.length; i++) {
+      urls.push(results[i].urls[0])
+    }
+    callback(err, urls);
+  });
+};
+
 module.exports = db
