@@ -7,18 +7,36 @@ module.exports = function(server) {
 
   server.get('/', function(req, res) {
 
-    urls = [
-      {
-        url: "http://www.bbc.co.uk/blogs/legacy/thereporters/robertpeston/2007/10/merrills_mess.html",
-        title: "Merrill's mess",
-        domain: "bbc.co.uk",
-        favicon: "http://www.bbc.co.uk/favicon.ico"
-      }
-    ];
+    var selection = req.param('selection','media companies');
+
+    switch(selection) {
+      case "media companies":
+        urls = [
+          {
+            url: "http://www.bbc.co.uk/blogs/legacy/thereporters/robertpeston/2007/10/merrills_mess.html",
+            title: "Merrill's mess",
+            domain: "bbc.co.uk",
+            favicon: "http://www.bbc.co.uk/favicon.ico"
+          }
+        ];
+        break;
+
+      case "anyone":
+        urls = [
+          {
+            url: "http://www.bbc.co.uk/blogs/legacy/thereporters/robertpeston/2007/10/merrills_mess.html",
+            title: "Merrill's mess",
+            domain: "unknown",
+            favicon: "unknown"
+          }
+        ];
+        break;
+    }
 
     res.render('home', {
         title: "Title"
       , urls: urls 
+      , selection: selection
     });
 
   });
