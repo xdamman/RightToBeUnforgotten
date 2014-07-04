@@ -20,14 +20,4 @@ module.exports = function(server) {
   server.use(bodyParser.urlencoded({extended:true}))
 
   server.set('port', process.env.PORT || process.env.NODE_PORT || 3000);
-
-  server.get('/inbound/:mailgun_key', function(req, res) {
-    console.log(req.body);
-    if (process.env["MAILGUN_KEY"] === req.params["mailgun_key"]) {
-      res.send("Email received!");
-    } else {
-      res.send(403, "Unauthorized");
-    }
-  });
-
 };
