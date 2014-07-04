@@ -20,9 +20,13 @@
   "bugs": {
     "url": "https://github.com/xdamman/RightToBeUnforgotten/issues"
   },
+  "engines": {
+    "node": "0.10.x"
+  },
   "homepage": "https://github.com/xdamman/RightToBeUnforgotten",
   "dependencies": {
     "express": "^4.4.5",
-    "mongoose": "^3.8.12"
+    "mongoose": "^3.8.12",
+    "logfmt": "^1.1.2"
   }
 }
