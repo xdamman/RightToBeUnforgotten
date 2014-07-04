@@ -6,8 +6,18 @@ module.exports = function(server) {
 
   server.get('/', function(req, res) {
 
+    urls = [
+      {
+        url: "http://www.bbc.co.uk/blogs/legacy/thereporters/robertpeston/2007/10/merrills_mess.html",
+        title: "Merrill's mess",
+        domain: "bbc.co.uk",
+        favicon: "http://www.bbc.co.uk/favicon.ico"
+      }
+    ];
+
     res.render('home', {
         title: "Title"
+      , urls: urls 
     });
 
   });

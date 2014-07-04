@@ -1,0 +1,15 @@
+<table class="table table-striped">
+  <tr>
+    <th colspan=2>Domain</th>
+    <th>Title</th>
+  </tr>
+
+  {{#each urls}}
+    <tr>
+      <td width="24"><img class="favicon" src="{{favicon}}" /></td>
+      <td width="200">{{domain}}</td>
+      <td><a href="{{url}}" target="_blank">{{title}}</a></td>
+    </tr>
+  {{/each}}
+
+</table>
