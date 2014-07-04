@@ -1,4 +1,5 @@
 var db = require('./db');
+var mongoskin = require('mongoskin');
 var express = require('express');
 
 module.exports = function(server) {
@@ -41,13 +42,23 @@ module.exports = function(server) {
 
   });
 
+  server.get('/process/:id', function(req, res) {
+    db.collection('emails').findById(req.params['id'], function(err, result){
+      db.processEmail(result, function(err, result){
+        res.json(result);
+      });
+    })
+  });
+
   server.post('/inbound/:mailgun_key', function(req, res) {
     if (process.env["MAILGUN_KEY"] === req.params["mailgun_key"]) {
       db.collection('emails').insert(req.body, function(err, result){
         if (err) {
           console.log("Error adding email: " + err);
         } else {
-          console.log("New email added");
+          db.processEmail(result, function(err, disappeared){
+            console.log(disappeared);
+          });
         }
       })
       res.send("Email received!");
@@ -55,6 +66,5 @@ module.exports = function(server) {
       res.send(403, "Unauthorized");
     }
   });
-
 
 };
