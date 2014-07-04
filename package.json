@@ -1,0 +1,28 @@
+{
+  "name": "RightToBeUnforgotten",
+  "version": "0.0.0",
+  "description": "RightToBeUnforgotten ====================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xdamman/RightToBeUnforgotten.git"
+  },
+  "keywords": [
+    "eu",
+    "press freedom",
+    "right to be forgotten"
+  ],
+  "author": "Mark Percival and Xavier Damman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xdamman/RightToBeUnforgotten/issues"
+  },
+  "homepage": "https://github.com/xdamman/RightToBeUnforgotten",
+  "dependencies": {
+    "express": "^4.4.5",
+    "mongoose": "^3.8.12"
+  }
+}
